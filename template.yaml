@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  HelloRustFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: hello-rust
+      Runtime: provided
+      # ハンドラ名は使われないが、ないとエラーになるので適当な文字列を入れておく
+      Handler: bootstrap.is.real.handler
+      CodeUri: .
+      Environment:
+        Variables:
+          RUST_LOG: info
+          RUST_BACKTRACE: 1
+          RUST_LOG_STYLE: never
+    Metadata:
+      # Makefileを使ったビルドを行う
+      BuildMethod: makefile

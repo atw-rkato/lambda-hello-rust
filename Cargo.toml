@@ -1,0 +1,19 @@
+[package]
+name = "hello-rust"
+version = "0.1.0"
+edition = "2021"
+
+# binaryの名前はbootstrapで固定
+[[bin]]
+name = "bootstrap"
+path = "src/main.rs"
+
+[dependencies]
+# Lambda用3点セット
+lambda_runtime = "0.4"
+tokio = "1.15"
+serde_json = "1.0"
+
+anyhow = { version = "1.0", features = ["backtrace"] }
+log = "0.4"
+env_logger = "0.9"
